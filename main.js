@@ -15,6 +15,9 @@ let test = 1;
 test += 1;
 console.log(test);
 
+test = test + '1';
+console.log(test);
+
 test -= 1;
 console.log(test);
 
