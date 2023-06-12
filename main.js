@@ -12,14 +12,36 @@ function palindrome(word) {
   let count = 0;
   for (let i = 0; i <= word.length; i++) {
     if (word[i] !== reverse[i]) {
-      count += count;
+      count++;
     }
   }
-
   return count === 0;
-
 }
 console.log(palindrome('комок'));
+
+console.log('2nd variant');
+
+function palindrome2(p) {
+  const reverse = [];
+  let el = 0;
+
+  for (let i = p.length - 1; i >= 0; i--) {
+    reverse[el] = p[i];
+    el++;
+  }
+
+  return reverse.join('') === p;
+}
+
+console.log(palindrome2('потоп'));
+
+console.log('3rd variant');
+
+function palindrome3(w) {
+  const result = w.split('').reverse().join('');
+  return w === result;
+}
+console.log(palindrome3('шалаш'));
 
 console.log('Task#2');
 
