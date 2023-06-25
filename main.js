@@ -1,100 +1,61 @@
+// module.exports = { sum, getColor, text1, text2, text3, color_text1, color_text2, color_text3, colors };
+
 console.log('Task#1');
 
-function palindrome(word) {
-  const reverse = [];
-  let el = 0;
-
-  for (let i = word.length - 1; i >= 0; i--) {
-    reverse[el] = word[i];
-    el++;
-  }
-
-  let count = 0;
-  for (let i = 0; i <= word.length; i++) {
-    if (word[i] !== reverse[i]) {
-      count++;
-    }
-  }
-  return count === 0;
-}
-console.log(palindrome('комок'));
-
-console.log('2nd variant');
-
-function palindrome2(p) {
-  const reverse = [];
-  let el = 0;
-
-  for (let i = p.length - 1; i >= 0; i--) {
-    reverse[el] = p[i];
-    el++;
-  }
-
-  return reverse.join('') === p;
+function sum(a) {
+  return function (b) {
+    return a + b;
+  };
 }
 
-console.log(palindrome2('потоп'));
-
-console.log('3rd variant');
-
-function palindrome3(w) {
-  const result = w.split('').reverse().join('');
-  return w === result;
-}
-console.log(palindrome3('шалаш'));
+console.log(sum(5)(2));
 
 console.log('Task#2');
 
-const min = function (a, b) {
-  if (a > b) {
-    return b;
-  } else if (a < b) {
-    return a;
-  }
-  console.log('Элементы равны');
-};
+const text1 = document.getElementById('text1');
+const text2 = document.getElementById('text2');
+const text3 = document.getElementById('text3');
 
-console.log(min(3, 6));
+const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 
-const max = function (a, y) {
-  if (a > y) {
-    return a;
-  } else if (a < y) {
-    return y;
-  }
-  console.log('Элементы равны');
-};
+let color_text1 = 0;
+let color_text2 = 0;
+let color_text3 = 0;
 
-console.log(max(7, 5));
-
-function maxx(a, b) {
-  return a > b ? a : b;
-}
-
-console.log(maxx(1, 6));
-
-function minn(a, b) {
-  return a < b ? a : b;
-}
-
-console.log(minn(1, 0));
-
-console.log('Task#3');
-
-const zero = function (arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] % 10 === 0) {
-      const first = arr[i] / 10;
-      if (first === 10) {
-        arr[i] = '1zerozero';
-      } else if (first === 0) {
-        arr[i] = 'zero';
-      } else {
-        arr[i] = first + 'zero';
+function getColor(text) {
+  switch (text) {
+    case text1:
+      text.style.color = colors[color_text1];
+      color_text1++;
+      if (color_text1 === colors.length) {
+        color_text1 = 0;
       }
-    }
+      return color_text1;
+    case text2:
+      text.style.color = colors[color_text2];
+      color_text2++;
+      if (color_text2 === colors.length) {
+        color_text2 = 0;
+      }
+      return color_text2;
+    case text3:
+      text.style.color = colors[color_text3];
+      color_text3++;
+      if (color_text3 === colors.length) {
+        color_text3 = 0;
+      }
+      return color_text3;
   }
-  return arr;
-};
+}
 
-console.log(zero([0, 23, 50, 84, 100, 90, 77, 20, 49, 33]));
+text1.addEventListener('click', (event) => {
+  event.target.style.color = getColor(text1);
+});
+
+text2.addEventListener('click', (event) => {
+  event.target.style.color = getColor(text2);
+});
+
+text3.addEventListener('click', (event) => {
+  event.target.style.color = getColor(text3);
+});
