@@ -1,5 +1,3 @@
-// module.exports = { sum, getColor, text1, text2, text3, color_text1, color_text2, color_text3, colors };
-
 console.log('Task#1');
 
 function sum(a) {
@@ -48,14 +46,29 @@ function getColor(text) {
   }
 }
 
-text1.addEventListener('click', (event) => {
-  event.target.style.color = getColor(text1);
+document.addEventListener('DOMContentLoaded', () => {
+  text1.addEventListener('click', (event) => {
+    event.target.style.color = colors[getColor(text1)];
+  });
+
+  text2.addEventListener('click', (event) => {
+    event.target.style.color = colors[getColor(text2)];
+  });
+
+  text3.addEventListener('click', (event) => {
+    event.target.style.color = colors[getColor(text3)];
+  });
 });
 
-text2.addEventListener('click', (event) => {
-  event.target.style.color = getColor(text2);
-});
 
-text3.addEventListener('click', (event) => {
-  event.target.style.color = getColor(text3);
-});
+module.exports = {
+  sum,
+  getColor,
+  text1,
+  text2,
+  text3,
+  color_text1,
+  color_text2,
+  color_text3,
+  colors,
+};
